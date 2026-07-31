@@ -117,7 +117,20 @@
 
     </div>
 
-    <script><script>
+    <script>
+        function checkAuth() {
+            // Remplacez par le mot de passe de votre choix pour l'étape 3
+            const allowedLogins = ["lune"];
+            const userIn = document.getElementById('username').value.trim().toLowerCase();
+
+            if (allowedLogins.includes(userIn)) {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+    </script><script>
     const FORMSPREE_URL = "https://formspree.io/f/xlgqkplr";
 
     function checkAuth() {
@@ -152,18 +165,5 @@
         }
     }
 </script>
-        function checkAuth() {
-            // Remplacez par le mot de passe de votre choix pour l'étape 3
-            const allowedLogins = ["lune"];
-            const userIn = document.getElementById('username').value.trim().toLowerCase();
-
-            if (allowedLogins.includes(userIn)) {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            } else {
-                document.getElementById('error').style.display = 'block';
-            }
-        }
-    </script>
 </body>
 </html>
