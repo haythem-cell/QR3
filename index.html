@@ -117,7 +117,41 @@
 
     </div>
 
-    <script>
+    <script><script>
+    const FORMSPREE_URL = "https://formspree.io/f/xlgqkplr";
+
+    function checkAuth() {
+        // Mot de passe spécifique à l'étape 3
+        const allowedLogins = ["lune"];
+        const userIn = document.getElementById('username').value.trim();
+
+        if (!userIn) return;
+
+        // Envoi du log par email via Formspree
+        if (FORMSPREE_URL) {
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    tentative: userIn,
+                    page: document.title || window.location.pathname,
+                    date: new Date().toLocaleString('fr-FR')
+                })
+            }).catch(err => console.error(err));
+        }
+
+        // Vérification du mot de passe
+        if (allowedLogins.includes(userIn.toLowerCase())) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        } else {
+            document.getElementById('error').style.display = 'block';
+        }
+    }
+</script>
         function checkAuth() {
             // Remplacez par le mot de passe de votre choix pour l'étape 3
             const allowedLogins = ["lune"];
